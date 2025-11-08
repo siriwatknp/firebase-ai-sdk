@@ -173,7 +173,7 @@ export function useChat<METADATA extends MessageMetadata = MessageMetadata>(
         );
 
         // Add user message to state
-        const updatedMessages = [...messages, userMessage];
+        const updatedMessages = [...messages, userMessage as UIMessage<METADATA>];
         updateMessages(updatedMessages);
 
         // Initialize model if not already done
@@ -225,7 +225,7 @@ export function useChat<METADATA extends MessageMetadata = MessageMetadata>(
           };
 
           // Update messages with streaming response
-          updateMessages([...updatedMessages, assistantMessage]);
+          updateMessages([...updatedMessages, assistantMessage] as UIMessage<METADATA>[]);
         }
 
         // Final message
@@ -241,7 +241,7 @@ export function useChat<METADATA extends MessageMetadata = MessageMetadata>(
           createdAt: new Date(),
         };
 
-        const finalMessages = [...updatedMessages, finalMessage];
+        const finalMessages = [...updatedMessages, finalMessage] as UIMessage<METADATA>[];
         updateMessages(finalMessages);
 
         // Update status

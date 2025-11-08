@@ -137,12 +137,9 @@ export interface FirebaseModelConfig {
   };
 
   /**
-   * Safety settings
+   * Safety settings - will be passed directly to Firebase AI
    */
-  safetySettings?: Array<{
-    category: string;
-    threshold: string;
-  }>;
+  safetySettings?: any;
 
   /**
    * System instruction for the model
